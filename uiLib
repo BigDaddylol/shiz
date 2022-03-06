@@ -1,0 +1,112 @@
+if game.CoreGui:FindFirstChild("mainGui") then
+    game.CoreGui:FindFirstChild("mainGui"):Destroy()
+end
+
+local FunctionTable = {}
+local mainGui = Instance.new("ScreenGui")
+mainGui.Name = "mainGui"
+mainGui.Parent = game.CoreGui
+mainGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "mainFrame"
+mainFrame.Parent = mainGui
+mainFrame.Active = true
+mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+mainFrame.BorderSizePixel = 0
+mainFrame.Position = UDim2.new(0.375103056, 0, 0.35118109, 0)
+mainFrame.Size = UDim2.new(0.248969495, 0, 0.296063006, 0)
+mainFrame.Draggable = true
+
+local exitButton = Instance.new("TextButton")
+exitButton.Name = "exitButton"
+exitButton.Parent = mainFrame
+exitButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+exitButton.BackgroundTransparency = 1.000
+exitButton.Position = UDim2.new(0.937086105, 0, 0, 0)
+exitButton.Size = UDim2.new(0.0629139096, 0, 0.101063825, 0)
+exitButton.Text = "X"
+exitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+exitButton.TextScaled = true
+exitButton.TextSize = 14.000
+exitButton.TextWrapped = true
+exitButton.MouseButton1Click:Connect(function() mainGui:Destroy() end)
+
+local title = Instance.new("TextLabel")
+title.Name = "title"
+title.Parent = mainFrame
+title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+title.BackgroundTransparency = 1.000
+title.Size = UDim2.new(0.937086105, 0, 0.265957415, 0)
+title.Text = "User Interface Library Function Test"
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.TextScaled = true
+title.TextSize = 14.000
+title.TextStrokeTransparency = 0.000
+title.TextWrapped = true
+
+local messageFrame = Instance.new("ScrollingFrame")
+messageFrame.Name = "messageFrame"
+messageFrame.Parent = mainFrame
+messageFrame.Active = true
+messageFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+messageFrame.BorderSizePixel = 0
+messageFrame.Position = UDim2.new(0.0231788084, 0, 0.265957415, 0)
+messageFrame.Size = UDim2.new(0.950331151, 0, 0.696808457, 0)
+
+local UIListLayout = Instance.new("UIListLayout")
+UIListLayout.Parent = messageFrame
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.Padding = UDim.new(0, 2)
+
+function randoName(length)
+	local res = ""
+	for i = 1, length do
+		res = res .. string.char(math.random(97, 122))
+	end
+	return res
+end
+
+function getTime()
+    local date = os.date("*t")
+    return ("%02d:%02d:%02d"):format(((date.hour % 24) - 1) % 12 + 1, date.min, date.sec)
+end
+
+function crtMsg()
+    local message = Instance.new("Frame")
+    message.Name = randoName(math.random(20, 30))
+    message.Parent = messageFrame
+    message.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+    message.Size = UDim2.new(0.961672485, 0, 0.0299999993, 0)
+    message.BorderSizePixel = 0
+    local messageOne = Instance.new("TextLabel")
+    messageOne.Name = "messageOne"
+    messageOne.Parent = message
+    messageOne.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    messageOne.BackgroundTransparency = 1.000
+    messageOne.BorderSizePixel = 0
+    messageOne.Size = UDim2.new(0, 163, 0, 11)
+    messageOne.Text = "Message sent at - "
+    messageOne.TextColor3 = Color3.fromRGB(255, 255, 255)
+    messageOne.TextStrokeTransparency = 0
+    messageOne.TextScaled = true
+    messageOne.TextSize = 14.000
+    messageOne.TextWrapped = true
+    messageOne.TextXAlignment = Enum.TextXAlignment.Right
+    local TextLabel = Instance.new("TextLabel")
+    TextLabel.Parent = message
+    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.BackgroundTransparency = 1.000
+    TextLabel.BorderSizePixel = 0
+    TextLabel.Position = UDim2.new(0.590579689, 0, 0, 0)
+    TextLabel.Size = UDim2.new(0, 113, 0, 11)
+    TextLabel.Text = getTime()
+    TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.TextStrokeTransparency = 0
+    TextLabel.TextScaled = true
+    TextLabel.TextSize = 14.000
+    TextLabel.TextWrapped = true
+    TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+crtMsg()
