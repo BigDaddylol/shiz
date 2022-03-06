@@ -3,6 +3,7 @@ if game.CoreGui:FindFirstChild("mainGui") then
 end
 
 local FunctionTable = {}
+local random = Random.new()
 local mainGui = Instance.new("ScreenGui")
 mainGui.Name = "mainGui"
 mainGui.Parent = game.CoreGui
@@ -14,7 +15,7 @@ mainFrame.Parent = mainGui
 mainFrame.Active = true
 mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 mainFrame.BorderSizePixel = 0
-mainFrame.Position = UDim2.new(0.375103056, 0, 0.35118109, 0)
+mainFrame.Position = UDim2.new(random:NextNumber(0.27, 0.47), 0, random:NextNumber(0.05, 0.55), 0)
 mainFrame.Size = UDim2.new(0.248969495, 0, 0.296063006, 0)
 mainFrame.Draggable = true
 
@@ -52,7 +53,26 @@ messageFrame.Active = true
 messageFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 messageFrame.BorderSizePixel = 0
 messageFrame.Position = UDim2.new(0.0231788084, 0, 0.265957415, 0)
-messageFrame.Size = UDim2.new(0.950331151, 0, 0.696808457, 0)
+messageFrame.Size = UDim2.new(0.950331151, 0, 0.526595712, 0)
+
+local disconnectBtn = Instance.new("TextButton")
+disconnectBtn.Name = "disconnectBtn"
+disconnectBtn.Parent = mainFrame
+disconnectBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+disconnectBtn.BorderSizePixel = 0
+disconnectBtn.Position = UDim2.new(0.0231788084, 0, 0.829787195, 0)
+disconnectBtn.Size = UDim2.new(0.950331151, 0, 0.127659559, 0)
+disconnectBtn.Text = "Disconnect Function(s)"
+disconnectBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+disconnectBtn.TextScaled = true
+disconnectBtn.TextSize = 14.000
+disconnectBtn.TextStrokeTransparency = 0.000
+disconnectBtn.TextWrapped = true
+disconnectBtn.MouseButton1Click:Connect(function()
+    for _, v in ipairs(FunctionTable) do
+        v:Disconnect()
+    end
+end)
 
 local UIListLayout = Instance.new("UIListLayout")
 UIListLayout.Parent = messageFrame
