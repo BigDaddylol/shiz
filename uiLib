@@ -1,3 +1,5 @@
+print("gay pron")
+
 if game.CoreGui:FindFirstChild("mainGui") then
     game.CoreGui:FindFirstChild("mainGui"):Destroy()
 end
