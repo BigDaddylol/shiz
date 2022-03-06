@@ -2,7 +2,7 @@ if game.CoreGui:FindFirstChild("mainGui") then
     game.CoreGui:FindFirstChild("mainGui"):Destroy()
 end
 
-local FunctionTable = {}
+FunctionTable = {}
 local random = Random.new()
 local mainGui = Instance.new("ScreenGui")
 mainGui.Name = "mainGui"
