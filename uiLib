@@ -6,6 +6,7 @@ end
 
 FunctionTable = {}
 local random = Random.new()
+local count = 0
 local mainGui = Instance.new("ScreenGui")
 mainGui.Name = "mainGui"
 mainGui.Parent = game.CoreGui
@@ -96,6 +97,7 @@ function getTime()
 end
 
 function crtMsg()
+    count = count + 1
     local message = Instance.new("Frame")
     message.Name = randoName(math.random(20, 30))
     message.Parent = messageFrame
@@ -130,6 +132,7 @@ function crtMsg()
     TextLabel.TextSize = 14.000
     TextLabel.TextWrapped = true
     TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+    print("Message iteration: "..count)
 end
 
 crtMsg()
