@@ -72,6 +72,7 @@ disconnectBtn.TextStrokeTransparency = 0.000
 disconnectBtn.TextWrapped = true
 disconnectBtn.MouseButton1Click:Connect(function()
     for _, v in ipairs(FunctionTable) do
+    	print(v)
         v:Disconnect()
     end
 end)
